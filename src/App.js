@@ -8,7 +8,7 @@ import SubscriptionForm from './components/subscribe';
 import Registration from './pages/registration';
 import Search from './pages/search';
 import Profile from './pages/profile';
-import AddOrder from './pages/addOrder'; // Импортируем компонент страницы добавления объявления
+import AddOrder from './pages/addOrder';
 import PrivateRoute from './components/privateRoute';
 
 const App = () => {
