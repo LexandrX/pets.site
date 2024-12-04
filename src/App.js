@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/header';
+import Footer from './components/footer';
+import Slider from './components/slider';
+import Cards from './components/cards';
+import SubscriptionForm from './components/subscribe';
+import Registration from './pages/registration';
+import Search from './pages/search';
+import Profile from './pages/profile';
+import AddOrder from './pages/addOrder'; // Импортируем компонент страницы добавления объявления
+import PrivateRoute from './components/privateRoute';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <main style={{ minHeight: '70vh' }}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <h2 className="text-center text-white bg-primary m-2">
+                  Найденные животные
+                </h2>
+                <Slider />
+                <h2 className="text-center text-white bg-primary m-3">
+                  Карточки найденных животных
+                </h2>
+                <Cards />
+                <SubscriptionForm />
+              </>
+            }
+          />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/profile" element={<PrivateRoute element={Profile} />} />
+          <Route path="/add-order" element={<AddOrder />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
